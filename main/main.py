@@ -49,7 +49,8 @@ def like(id):
         db.session.commit()
 
         publish('product_liked', id)
-    except:
+    except Exception as e:
+        print(e)
         abort(400, 'You already liked this product')
 
     return jsonify({
